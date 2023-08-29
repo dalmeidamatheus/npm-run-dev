@@ -25,3 +25,9 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.custom-heading {
+  color: yellow;
+  font-size: 2rem; /* Define o tamanho da fonte como 3xl */
+  font-weight: bold; /* Define a fonte como negrito */
+}
