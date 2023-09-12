@@ -1,24 +1,19 @@
-import CardFilme from 'src/components/CardFilme.jsx'
+import CardNoticia from 'src/components/CardNoticia.jsx'
 import Title from 'src/components/Title.jsx'
 
-export default function Home() {
-  const filmes = [
-    {
-      titulo: "Bella Campos negou os rumores de reconciliação com MC Cabelinho.",
-      nota: "12 minutos",
-      poster: "https://www.themoviedb.org/t/p/w220_and_h330_face/8tBhAn6qVRQzf5yvEcxjgPMgTkw.jpg"
-    },
-    {
-      titulo: "Jogador Richarlison passa horas atendendo fãs",
-      nota: "15 minutos",
-      poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/yRRuLt7sMBEQkHsd1S3KaaofZn7.jpg"
-    },
-    {
-      titulo: "Bella Campos negou os rumores de reconciliação com MC Cabelinho.",
-      nota: "20 minutos",
-      poster: "https://www.themoviedb.org/t/p/w220_and_h330_face/8tBhAn6qVRQzf5yvEcxjgPMgTkw.jpg"
-    }
-  ]
+
+async function carregarNoticias() {
+  const url = "https://newsapi.org/v2/everything?q=choquei&from=2023-09-07&sortBy=popularity&apiKey=6b2922947e9c469cb6f5535998ef6419"
+  const resposta = await fetch(url)
+  const json = await resposta.json()
+
+  console.log(json)
+
+  return json.articles
+}
+
+export default async function Home() {
+  const noticias = await carregarNoticias()
 
   return ( //JSX
     <>
@@ -26,7 +21,7 @@ export default function Home() {
         <ul style={{ paddingTop: "1px" }}>
           <li>
             <a href="#">
-            <h1 className="custom-heading" style={{ fontSize: "25px", fontWeight: "bold", color:"yellow" }}>Chocante!</h1>
+              <h1 className="custom-heading" style={{ fontSize: "25px", fontWeight: "bold", color: "yellow" }}>Chocante!</h1>
             </a>
           </li>
         </ul>
@@ -43,16 +38,16 @@ export default function Home() {
         </ul>
       </nav>
 
-     <Title>Em alta</Title>
+      <Title>Em alta</Title>
 
-      <section className='flex flex-wrap'>
-        {filmes.map(filme => <CardFilme filme={filme} /> )}
-      </section>
+          <section className='flex flex-wrap'>
+            {noticias.map(noticia => <CardNoticia noticia={noticia} />)}
+          </section>
 
-     <Title>Destaques</Title>
-     <Title>Novidades</Title>
-   
+      <Title>Destaques</Title>
+      <Title>Novidades</Title>
+
     </>
-   
+
   )
 }
