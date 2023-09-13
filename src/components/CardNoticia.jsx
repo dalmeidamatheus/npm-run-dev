@@ -16,8 +16,13 @@ export default function CardNoticia({ noticia }) {
     const url_imagem = `${noticia.urlToImage}`
     const diferencaDias = calcularDiferencaDeDias(noticia.publishedAt)
 
+    function favoritar(){
+        setFavorito(true)
+        }
+    
+
     return (
-        <div id="card" className='flex flex-col w-80 justify-center items-center m-2' style={{ height: '350px' }}>
+        <div id="card" className='flex flex-col w-60 justify-center items-center m-2' style={{ height: '300px' }}>
             <img className='rounded object-cover h-full' src={url_imagem} alt="" />
             <div className="flex flex-col justify-center items-center mt-2" style={{ textAlign: 'center' }}>
                 <span className='font-bold text-center line-clamp-1'>
@@ -31,9 +36,9 @@ export default function CardNoticia({ noticia }) {
                 detalhes
             </a>
             {favorito ?
-                <StarIcon onClick={() => setFavorito(false)} className="h-8 w-8 text-slate-100 cursor-pointer " />
+                <StarIcon onClick={() => setFavorito(false)} className="h-10 w-10 text-slate-100 cursor-pointer " />
                 :
-                <StarIcon onClick={() => setFavorito(true)} className="h-8 w-8 text-yellow-300 cursor-pointer" />
+                <StarIcon onClick={favoritar} className="h-10 w-10 text-yellow-300 cursor-pointer" />
             }
         </div>
     )
