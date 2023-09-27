@@ -3,7 +3,7 @@ import Title from 'src/components/Title.jsx'
 
 
 async function carregarNoticias() {
-  const url = "https://newsapi.org/v2/everything?q=choquei&from=2023-09-07&sortBy=popularity&apiKey=6b2922947e9c469cb6f5535998ef6419"
+  const url = "https://newsapi.org/v2/everything?q=choquei&from=2023-09-24&sortBy=popularity&apiKey=6b2922947e9c469cb6f5535998ef6419"
   const resposta = await fetch(url)
   const json = await resposta.json()
 
