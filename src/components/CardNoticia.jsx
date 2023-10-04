@@ -14,12 +14,13 @@ function calcularDiferencaDeDias(dataString) {
 export default function CardNoticia({ noticia }) {
     const [favorito, setFavorito] = useState(true)
     const url_imagem = `${noticia.urlToImage}`
+    const url_noticia = `${noticia.url}`
     const diferencaDias = calcularDiferencaDeDias(noticia.publishedAt)
 
-    function favoritar(){
+    function favoritar() {
         setFavorito(true)
-        }
-    
+    }
+
 
     return (
         <div id="card" className='flex flex-col w-60 justify-center items-center m-2' style={{ height: '300px' }}>
@@ -32,7 +33,7 @@ export default function CardNoticia({ noticia }) {
                     <span>Há {diferencaDias} dia(s)</span>
                 </div>
             </div>
-            <a href="#" className='bg-yellow-600 py-2 w-full rounded text-center'>
+            <a href={url_noticia} className='bg-yellow-600 py-2 w-full rounded text-center'>
                 detalhes
             </a>
             {favorito ?
