@@ -1,26 +1,36 @@
 "use client"
 
 import Image from "next/image";
-import loginImage from "src/images/fofoca.jpg"
+import loginimage from "src/images/fofoca.jpg"
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { toast } from "react-hot-toast";
+import { serverLogin } from "src/actions/auth.js";
 
-export default function login(){
+export default function Login(){
     const [email, setEmail] = useState("")
     const [senha, setSenha] = useState("")
-    const {push} = useRouter()
+    const { push } = useRouter()
 
     function login(e){
         e.preventDefault()
-        if(email => "rm87560@fiap.com.br" && senha== "fiap"){
+        if (email === "rm87560@fiap.com.br" && senha === "fiap"){
+            serverLogin()
             push("/")
-        }else(alert("Dados Invalidos."))
+        }else{
+            toast.error("Credenciais inválidas", {
+                style: {
+                    backgroundColor: '#333',
+                    color: '#fff'
+                }
+            })
+        }
     }
 
     return(
         <div className="flex">
             <aside className="hidden lg:flex h-screen">
-                <Image src={loginImage} className="h-auto w-auto object-cover" />   
+                <Image src={loginimage} className="h-auto w-auto object-cover" />   
             </aside>
             <main className="flex flex-col justify-center items-center p-4 h-screen w-full">
                 <h2>Chocante!</h2>
@@ -35,14 +45,14 @@ export default function login(){
                             className="bg-slate-600 p-1 rounded"
                     />
 
-                    <label htmlFor="password">Senha</label>
+                    <label htmlFor="senha">Senha</label>
                     <input  type="password" 
-                            id = 'password'
+                            id = 'senha'
                             value={senha}
                             onChange={(e) => setSenha(e.target.value)}
                             className="bg-slate-600 p-1 rounded"/>
                     
-                    <button className="bg-pink-600 p-2 rounded mt-2">Entrar</button>
+                    <button className='bg-yellow-600 py-2 w-full rounded text-center'>Entrar</button>
                 </form>
             </main>
         </div>

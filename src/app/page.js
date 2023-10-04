@@ -1,5 +1,6 @@
 import CardNoticia from 'src/components/CardNoticia.jsx'
 import Title from 'src/components/Title.jsx'
+import NavBar from "src/components/navbar.jsx";
 
 
 async function carregarNoticias() {
@@ -17,26 +18,7 @@ export default async function Home() {
 
   return ( //JSX
     <>
-      <nav className="bg-slate-900 p-3 flex items-center justify-between">
-        <ul style={{ paddingTop: "1px" }}>
-          <li>
-            <a href="#">
-              <h1 className="custom-heading" style={{ fontSize: "25px", fontWeight: "bold", color: "yellow" }}>Chocante!</h1>
-            </a>
-          </li>
-        </ul>
-        <ul className="flex space-x-8" style={{ color: "white" }}>
-          <li>
-            <a href="#">Novidades</a>
-          </li>
-          <li>
-            <a href="#">Em alta</a>
-          </li>
-          <li>
-            <a href="#">Destaques</a>
-          </li>
-        </ul>
-      </nav>
+      <NavBar />
 
       <Title>Em alta</Title>
 
